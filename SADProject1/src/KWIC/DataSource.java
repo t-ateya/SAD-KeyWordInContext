@@ -4,26 +4,26 @@ import java.util.Scanner;
 
 public class DataSource implements Runnable {
 
-	private Scanner scanner;
+	private Scanner input;
 	protected Pipe<String> outPipe;
-	
+
 	public DataSource(Pipe<String> outPiple) {
 		this.outPipe = outPipe;
-		this.scanner = new Scanner(System.in);
+		this.input = new Scanner(System.in);
 	}
-	
+
 	protected synchronized void readData() {
-		outPipe.push(scanner.nextLine());
-		
+		outPipe.push(input.nextLine());
+
 		Pipeline.startTime = System.nanoTime();
 	}
 
 	@Override
 	public void run() {
-		while(scanner.hasNext()) {
+		while (input.hasNext()) {
 			readData();
 		}
-		
+
 		System.out.println("Closing application...GoodBye From Data Source");
 		System.exit(0);
 
