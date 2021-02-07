@@ -7,8 +7,8 @@ public class DataSource implements Runnable {
 	private Scanner input;
 	protected Pipe<String> outPipe;
 
-	public DataSource(Pipe<String> outPiple) {
-		this.outPipe = outPipe;
+	public DataSource(Pipe<String> out) {
+		this.outPipe = out;
 		this.input = new Scanner(System.in);
 	}
 
