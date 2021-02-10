@@ -1,6 +1,8 @@
 package KWIC;
 
 import java.util.Arrays;
+import java.util.Queue;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.SortedSet;
 
@@ -15,14 +17,14 @@ public class Kwick {
 		System.out.println("Input titles in each line.");
 		System.out.println("Press [ENTER] to input more lines");
 		System.out.println("Press [CTRL+D] when you are done");
-		System.out.println("Ignoring words: [" + Arrays.stream(stopWords).collect(Collectors.joining(", ")) + "]");
+		//System.out.println("Ignoring words: [" + Arrays.stream(stopWords).collect(Collectors.joining(", ")) + "]");
 		
 	}
 
 	public Kwick(String...stopWords) {
 		Pipe<String>p1 = new Pipe<>();
 		Pipe<String>p2 = new Pipe<>();
-		Pipe<SortedSet<String>>p3 = new Pipe<>();
+		Pipe<Set<String>>p3 = new Pipe<>();
 		
 		DataSource dataSource = new DataSource(p1);
 		Filter circularShift = new CircularShift(p1, p2, stopWords);

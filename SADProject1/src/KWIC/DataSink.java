@@ -1,13 +1,14 @@
 package KWIC;
 
-import java.util.SortedSet;
+import java.util.Queue;
+import java.util.Set;
 
 public class DataSink implements Runnable {
 
-	private Pipe<SortedSet<String>> inPipe;
-	private SortedSet<String> temp;
+	private Pipe<Set<String>> inPipe;
+	private Set<String> temp;
 
-	public DataSink(Pipe<SortedSet<String>> inPipe) {
+	public DataSink(Pipe<Set<String>> inPipe) {
 		this.inPipe = inPipe;
 	}
 
@@ -23,14 +24,7 @@ public class DataSink implements Runnable {
 				temp = inPipe.pull();
 				temp.forEach(System.out::println);
 
-				Pipeline.arrivalTime = System.nanoTime();
-				System.out.println();
-				System.out.println("[Statistics]");
-				System.out.println();
-				System.out.println("Start Time: " + Pipeline.startTime);
-				System.out.println("Arrival Time: " + Pipeline.arrivalTime);
-				System.out.println("Duration: " + ((Pipeline.arrivalTime-Pipeline.startTime)/1000000) + "(ms)");
-				System.out.println();
+				
 
 			}
 		}
