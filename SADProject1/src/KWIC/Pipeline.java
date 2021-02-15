@@ -19,18 +19,18 @@ public class Pipeline {
 		this.filters = new ArrayList<>();
 	}
 
-	public Pipeline  generateFrom(DataSource dataSource) {
+	public Pipeline  generateData(DataSource dataSource) {
 		this.dataSource = dataSource;
 		
 		return this;
 	}
 	
-	public Pipeline transformBy(Filter filter) {
+	public Pipeline transformData(Filter filter) {
 		filters.add(filter);
 		return this;
 	}
 	
-	public Pipeline outputInto(DataSink dataSink) {
+	public Pipeline outputData(DataSink dataSink) {
 		this.dataSink = dataSink;
 		return this;
 	}

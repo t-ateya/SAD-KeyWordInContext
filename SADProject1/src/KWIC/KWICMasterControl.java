@@ -6,10 +6,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.SortedSet;
 
-public class Kwick {
+public class KWICMasterControl {
 	public static void main(String[] args) {
 		printHeader(args);
-		new Kwick(args);
+		new KWICMasterControl(args);
 	}
 	
 	private static void printHeader(String[] stopWords) {
@@ -21,7 +21,7 @@ public class Kwick {
 		
 	}
 
-	public Kwick(String...stopWords) {
+	public KWICMasterControl(String...stopWords) {
 		Pipe<String>p1 = new Pipe<>();
 		Pipe<String>p2 = new Pipe<>();
 		Pipe<Set<String>>p3 = new Pipe<>();
@@ -32,10 +32,10 @@ public class Kwick {
 		DataSink dataSink = new DataSink(p3);
 		
 		Pipeline pipeline = new Pipeline();
-		pipeline.generateFrom(dataSource)
-				.transformBy(circularShift)
-				.transformBy(alphabetizer)
-				.outputInto(dataSink)
+		pipeline.generateData(dataSource)
+				.transformData(circularShift)
+				.transformData(alphabetizer)
+				.outputData(dataSink)
 				.run();
 				
 	}

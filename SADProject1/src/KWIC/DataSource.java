@@ -24,7 +24,7 @@ public class DataSource implements Runnable {
 			readData();
 		}
 
-		System.out.println("Closing application...GoodBye From Data Source");
+		System.out.println("Closing application");
 		System.exit(0);
 
 	}
